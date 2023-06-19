@@ -76,10 +76,11 @@ public class PDFUtils
         File srcFile = new File(srcFilePath);
         PDDocument pdfDocument = PDDocument.load(srcFile);
         PDDocument tmpDoc = new PDDocument();
+        var nrOfPages = pdfDocument.getNumberOfPages();
 
         // test if a page is within a range
         // if not, append the page to a temp. doc.
-        for (int i = 0; i < pdfDocument.getNumberOfPages(); i++) {
+        for (int i = 0; i < nrOfPages; i++) {
             if (pageInInterval.test(i, pageRanges)) {
                 continue;
             }
